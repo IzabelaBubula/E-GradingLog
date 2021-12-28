@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo3.fxml_3.AddToGroup">
+   <children>
+      <Label alignment="CENTER" prefHeight="35.0" prefWidth="600.0" text="Add To Group">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="-14.0" layoutY="26.0" prefHeight="125.0" prefWidth="600.0" AnchorPane.bottomAnchor="249.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="26.0">
+         <children>
+            <Label layoutX="185.0" layoutY="27.0" prefHeight="18.0" prefWidth="114.0" text="Name" />
+            <Label layoutX="185.0" layoutY="54.0" prefHeight="18.0" prefWidth="114.0" text="Surname" />
+            <Label layoutX="185.0" layoutY="80.0" prefHeight="18.0" prefWidth="114.0" text="ID" />
+            <TextField fx:id="firstNameTextField" layoutX="315.0" layoutY="24.0" />
+            <TextField fx:id="secondNameTextField" layoutX="315.0" layoutY="50.0" />
+            <TextField fx:id="IDTextField" layoutX="315.0" layoutY="76.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="166.0" prefHeight="200.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="204.0" prefWidth="600.0">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="18.0" prefWidth="274.0" text="List of Groups" />
+                        <ListView fx:id="groupsListView" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </VBox>
+                  <Button mnemonicParsing="false" onAction="#listViewButtonPushed" prefHeight="26.0" prefWidth="64.0" text="Accept">
+                     <HBox.margin>
+                        <Insets top="80.0" />
+                     </HBox.margin>
+                  </Button>
+                  <VBox>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="18.0" prefWidth="276.0" text="Selected Groups" />
+                        <TextArea fx:id="groupTextArea" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <ButtonBar layoutY="366.0" prefHeight="35.0" prefWidth="600.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#openMainPanel" text="Exit" />
+            <Button mnemonicParsing="false" onAction="#acceptButtonPushed" text="Accept" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>

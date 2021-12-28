@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="550.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo3.fxml_3.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <Label text="Groups and Students">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <SplitPane dividerPositions="0.478030303030303" prefHeight="389.0" prefWidth="500.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tableView1" onMouseClicked="#showGroupPanel" prefHeight="388.0" prefWidth="407.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <fx:include fx:id="sub" source="show-group-info.fxml" />
+                      <columns>
+                      <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                        <TableColumn fx:id="maxColumn" minWidth="0.0" prefWidth="127.1999740600586" text="Max Students" />
+                      <TableColumn fx:id="currColumn" prefWidth="179.2000274658203" text="Current Students" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tableView" onMouseClicked="#showStudentPanel" prefHeight="388.0" prefWidth="428.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="79.99993896484375" text="Id" />
+                      <TableColumn fx:id="firstNameColumn" prefWidth="92.00009155273438" text="Name" />
+                      <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Surname" />
+                        <TableColumn fx:id="birthdayColumn" prefWidth="75.0" text="Birthday" />
+                        <TableColumn fx:id="nrofpktColumn" prefWidth="75.0" text="Points" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <AnchorPane prefHeight="0.0" prefWidth="860.0">
+         <children>
+            <Button layoutX="777.0" layoutY="15.0" mnemonicParsing="false" onAction="#openAddMerksSetStudentPanel" text="Add Mark" />
+            <Button layoutX="686.0" layoutY="16.0" mnemonicParsing="false" onAction="#openAddClassPanel" text="Add Class" />
+          <Button layoutX="587.0" layoutY="16.0" mnemonicParsing="false" onAction="#openAddStudentPanel" text="Add Student" />
+            <TextField fx:id="filteredField" layoutX="7.0" layoutY="8.0" prefHeight="26.0" prefWidth="194.0" promptText="Search Students" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

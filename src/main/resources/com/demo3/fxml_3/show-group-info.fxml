@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo3.fxml_3.ShowGroupInfo">
+   <children>
+      <SplitPane dividerPositions="0.3663101604278074" prefHeight="368.0" prefWidth="600.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="279.0">
+               <children>
+                  <Label layoutX="22.0" layoutY="47.0" text="Name" />
+                  <Label layoutX="22.0" layoutY="89.0" text="Max" />
+                  <Label layoutX="12.0" layoutY="127.0" prefHeight="18.0" prefWidth="51.0" text="Current" />
+                  <TextField fx:id="nameTextField" editable="false" layoutX="59.0" layoutY="43.0" />
+                  <TextField fx:id="maxTextField" editable="false" layoutX="59.0" layoutY="85.0" />
+                  <TextField fx:id="currTextField" editable="false" layoutX="59.0" layoutY="124.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="studentTableView" prefHeight="338.0" prefWidth="361.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="Name" />
+                      <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Surmane" />
+                        <TableColumn fx:id="nrofpktColumn" prefWidth="75.0" text="Points" />
+                        <TableColumn fx:id="birthdayColumn" prefWidth="75.0" text="Birthday" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <AnchorPane prefHeight="90.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="534.0" layoutY="18.0" mnemonicParsing="false" onAction="#openMainPanel" text="Exit " />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
