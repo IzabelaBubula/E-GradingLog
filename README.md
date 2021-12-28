@@ -1,5 +1,5 @@
 # E-GradingLog
-Simulator of electronical garding log, where adding students, groupas and marks is available. 
+Simulator of electronical garding log, where adding students, groupas and marks is available. Created using JavaFX
 
 App features:
 -adding new students, groups
