@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 
-public class Student {
+public class Student implements java.io.Serializable{
     private SimpleStringProperty firstName, lastName;
     private LocalDate birthday;
     private SimpleIntegerProperty nrOfPoints, ID;

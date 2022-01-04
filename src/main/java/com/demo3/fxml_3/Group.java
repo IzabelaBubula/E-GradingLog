@@ -8,23 +8,12 @@ import javafx.collections.ObservableList;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Group{
+public class Group implements java.io.Serializable{
     private SimpleStringProperty groupName;
     private SimpleIntegerProperty maxNrOfStudents;
     private SimpleIntegerProperty currNrOfStudents;
-    private SimpleIntegerProperty ID;
 
-    public int getID() {
-        return ID.get();
-    }
 
-    public SimpleIntegerProperty IDProperty() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID.set(ID);
-    }
 
 
     private static ObservableList<Student> students = FXCollections.observableArrayList();

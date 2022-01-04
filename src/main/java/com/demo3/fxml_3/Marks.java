@@ -4,7 +4,9 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Marks {
+import java.io.Serializable;
+
+public class Marks implements Serializable {
     private SimpleStringProperty groupName;
     private SimpleDoubleProperty markValue;
 

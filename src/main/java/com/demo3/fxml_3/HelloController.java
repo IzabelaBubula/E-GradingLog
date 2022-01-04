@@ -1,8 +1,8 @@
 package com.demo3.fxml_3;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.util.Locale;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.transformation.FilteredList;
@@ -47,7 +47,8 @@ public class HelloController implements Initializable {
     //filter field
     @FXML private TextField filteredField;
 
-
+    String filenameSerStud = "ser_stud.ser";
+    String filenameSerGr = "ser_gr.ser";
 
 
 //    public ObservableList<Student> getStudent() {
@@ -290,8 +291,117 @@ public class HelloController implements Initializable {
         stage.show();
     }
 
+    public void serializableStudents(ActionEvent actionEvent) throws Exception{
+
+        try{
+            FileOutputStream file = new FileOutputStream(filenameSerStud);
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            for(Student s1 : Student.getStudent()){
+                StudentSer st_temp = new StudentSer(s1.getFirstName(), s1.getLastName(), s1.getBirthday(), s1.getNrOfPoints(), s1.getID()); // bo observable sie nie da tak samo jak simpleStringProperty
+                out.writeObject(st_temp);
+            }
+            out.close();
+            file.close();
+
+            Alert compleatedSerializationAlert = new Alert(Alert.AlertType.INFORMATION);
+            compleatedSerializationAlert.setHeaderText("Serialization completed");
+            compleatedSerializationAlert.setContentText("All students serialized to file " + filenameSerStud);
+            compleatedSerializationAlert.showAndWait();
+        } catch (Exception e) {
+            Alert errorSerializabelAlert = new Alert(Alert.AlertType.ERROR);
+            errorSerializabelAlert.setHeaderText("Exeption caught");
+            errorSerializabelAlert.setContentText("Students are not serializable to " + filenameSerStud);
+            errorSerializabelAlert.showAndWait();
+        }
+    }
+
+    public void deserializeStudents(ActionEvent actionEvent) throws Exception{
+
+        try {
+            FileInputStream file = new FileInputStream(filenameSerStud);
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            ArrayList<StudentSer> temSt = new ArrayList<>();
+            for (int i = 0; i < Student.getStudent().size(); i++) {
+                temSt.add((StudentSer) in.readObject());
+            }
+
+            in.close();
+            file.close();
+
+            Alert compleatedSerializationAlert = new Alert(Alert.AlertType.INFORMATION);
+            compleatedSerializationAlert.setHeaderText("Deserialization completed");
+            compleatedSerializationAlert.setContentText("All students deerialized");
+            compleatedSerializationAlert.showAndWait();
+
+            for (StudentSer s1 : temSt)
+                System.out.println("Name: " + s1.name);
+        } catch (Exception e){
+            Alert errorSerializabelAlert = new Alert(Alert.AlertType.ERROR);
+            errorSerializabelAlert.setHeaderText("Exeption caught");
+            errorSerializabelAlert.setContentText("Students are nod deserialized");
+            errorSerializabelAlert.showAndWait();
+        }
+    }
+
+    public void serializableGroups(ActionEvent actionEvent) throws Exception{
+
+        try{
+            FileOutputStream file = new FileOutputStream(filenameSerGr);
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            for(Group g1: Group.getGroups()){
+                GroupSer g_tmp = new GroupSer(g1.getGroupName(), g1.getMaxNrOfStudents(), g1.getCurrNrOfStudents());
+                out.writeObject(g_tmp);
+            }
+            out.close();
+            file.close();
+
+            Alert compleatedSerializationAlert = new Alert(Alert.AlertType.INFORMATION);
+            compleatedSerializationAlert.setHeaderText("Serialization completed");
+            compleatedSerializationAlert.setContentText("All groups serialized to file " + filenameSerGr);
+            compleatedSerializationAlert.showAndWait();
+        } catch (Exception e) {
+            Alert errorSerializabelAlert = new Alert(Alert.AlertType.ERROR);
+            errorSerializabelAlert.setHeaderText("Exeption caught");
+            errorSerializabelAlert.setContentText("Groups are not serializable to " + filenameSerGr);
+            errorSerializabelAlert.showAndWait();
+        }
+    }
+
+    public void deserializeFroups(ActionEvent actionEvent) throws Exception{
+
+        try {
+            FileInputStream file = new FileInputStream(filenameSerGr);
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            ArrayList<GroupSer> temSt = new ArrayList<>();
+            for (int i = 0; i < Group.getGroups().size(); i++) {
+                temSt.add((GroupSer) in.readObject());
+            }
+
+            in.close();
+            file.close();
+
+            Alert compleatedSerializationAlert = new Alert(Alert.AlertType.INFORMATION);
+            compleatedSerializationAlert.setHeaderText("Deserialization completed");
+            compleatedSerializationAlert.setContentText("All groups deerialized");
+            compleatedSerializationAlert.showAndWait();
+
+            for (GroupSer s1 : temSt)
+                System.out.println("Name: " + s1.nameGroup);
+        } catch (Exception e){
+            Alert errorSerializabelAlert = new Alert(Alert.AlertType.ERROR);
+            errorSerializabelAlert.setHeaderText("Exeption caught");
+            errorSerializabelAlert.setContentText("Groups are nod deserialized");
+            errorSerializabelAlert.showAndWait();
+        }
+    }
+
 
     //pressed table methodes
+
     public void showGroupPanel(Event Event) throws Exception{
         try {
             nameOfGroup = tableView1.getSelectionModel().getSelectedItem().getGroupName();
@@ -374,7 +484,6 @@ public class HelloController implements Initializable {
 //            logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
-
 
     static final String getSelectedGroupName(){ return nameOfGroup;}
     static final String getSelectedStudentName() {return nameOfStudent;}
